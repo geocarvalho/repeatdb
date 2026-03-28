@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "repeatdb"
+version = "0.1.0"
+description = "Análise de repeat expansions a partir de VCFs gerados pelo ExpansionHunter"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cyvcf2",
+    "polars",
+    "pyarrow",
+    "scipy",
+    "numpy",
+    "pydantic>=2",
+    "typer",
+    "rich",
+]
+
+[project.scripts]
+repeatdb = "repeatdb.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["repeatdb"]
